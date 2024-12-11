@@ -1,0 +1,55 @@
+<br><br><br>
+<div>
+    <h1>Usuarios</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Rol</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of usuarios">
+          <td>{{ usuario.Nombre }}</td>
+          <td>{{ usuario.Email }}</td>
+          <td>{{ usuario.Rol }}</td>
+          <td>
+            <button (click)="editarUsuario(usuario)">Editar</button>
+            <button (click)="eliminarUsuario(usuario.ID_Usuario)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Formulario de edición -->
+    <div *ngIf="usuarioSeleccionado" class="modal">
+      <div class="modal-content">
+        <h2>Editar Usuario</h2>
+        <form (ngSubmit)="guardarCambios()">
+          <label>
+            Nombre:
+            <input type="text" [(ngModel)]="usuarioSeleccionado.Nombre" name="nombre" required />
+          </label>
+          <label>
+            Email:
+            <input type="email" [(ngModel)]="usuarioSeleccionado.Email" name="email" required />
+          </label>
+          <label>
+            Rol:
+            <select [(ngModel)]="usuarioSeleccionado.Rol" name="rol" required>
+              <option value="Admin">Admin</option>
+              <option value="Cliente">Cliente</option>
+              <option value="Vendedor">Vendedor</option>
+            </select>
+          </label>
+          <div class="actions">
+            <button type="submit">Guardar</button>
+            <button type="button" (click)="cancelarEdicion()">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

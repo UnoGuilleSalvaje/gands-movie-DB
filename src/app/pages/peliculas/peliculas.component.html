@@ -1,0 +1,33 @@
+<br><br><br><br><br><br>
+<div class="filtro-container">
+    <input [(ngModel)]="query" placeholder="Buscar por nombre..." />
+    <input [(ngModel)]="duracion" type="number" placeholder="Duración (en minutos)..." />
+    <input [(ngModel)]="clasificacion" placeholder="Clasificación..." />
+    <input [(ngModel)]="precio" type="number" placeholder="Precio máximo..." />
+    <input [(ngModel)]="genero" placeholder="Género..." />
+    <input [(ngModel)]="idioma" placeholder="Idioma..." />
+    <button (click)="buscarPeliculas()">Buscar</button>
+  </div>
+  
+  <div class="peliculas-container">
+    <div class="pelicula-card" *ngFor="let pelicula of peliculasFiltradas">
+      <img src="../../../assets/Imagendefault.jpg" alt="{{ pelicula.Titulo }}" />
+      <h3>{{ pelicula.Titulo }}</h3>
+      <p><strong>Duración:</strong> {{ pelicula.Duracion }} min</p>
+      <p><strong>Clasificación:</strong> {{ pelicula.Clasificacion }}</p>
+      <p class="precio">Precio: ${{ pelicula.Precio }}</p>
+      <div class="generos">
+        <strong>Géneros:</strong>
+        <span *ngFor="let genero of pelicula.Generos">{{ genero }}</span>
+      </div>
+      <div class="idiomas">
+        <strong>Idiomas:</strong>
+        <span *ngFor="let idioma of pelicula.Idiomas">{{ idioma }}</span>
+      </div>
+      <button  class="btn-comprar" *ngIf="isLoggedIn" (click)="comprarPelicula(pelicula)">Comprar</button>
+<button  class="btn-comprar" *ngIf="!isLoggedIn" (click)="redirigirLogin()">Iniciar sesión</button>
+
+      
+    </div>
+  </div>
+  

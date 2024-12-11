@@ -1,0 +1,27 @@
+<br><br><br>
+<div class="table-container">
+    <h2>Películas Populares por Protagonista</h2>
+    <div class="search-container">
+      <input
+        type="text"
+        [(ngModel)]="protagonista"
+        placeholder="Buscar por protagonista"
+      />
+      <button (click)="buscar()">Buscar</button>
+    </div>
+    <table *ngIf="peliculasPopulares.length">
+      <thead>
+        <tr>
+          <th>Película</th>
+          <th>Popularidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pelicula of peliculasPopulares">
+          <td>{{ pelicula.Pelicula }}</td>
+          <td>{{ pelicula.Popularidad }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

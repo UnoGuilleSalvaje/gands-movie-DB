@@ -1,0 +1,40 @@
+
+<br><br><br>
+<div class="cart-container">
+    <h2>Tu Carrito</h2>
+  
+    <div *ngFor="let item of cartItems; let i = index" class="cart-item">
+      <div class="item-info">
+        <p><strong>{{ item.Titulo }}</strong></p>
+        <p>Precio: ${{ item.Precio }}</p>
+        <div class="quantity">
+          <button (click)="decreaseQuantity(i)">-</button>
+          <span>{{ item.quantity }}</span>
+          <button (click)="increaseQuantity(i)">+</button>
+        </div>
+      </div>
+      <button class="remove-btn" (click)="removeFromCart(i)">Eliminar</button>
+    </div>
+  <!--
+    <div class="coupon-section">
+      <input
+        type="text"
+        [(ngModel)]="couponCode"
+        placeholder="Introduce tu cupón"
+      />
+      <button (click)="applyCoupon()">Aplicar cupón</button>
+      <p *ngIf="discount > 0">
+        Cupón aplicado: -${{ discount }}
+      </p>
+      <p *ngIf="couponError" class="error">{{ couponError }}</p>
+    </div>-->
+  
+    <div class="cart-summary">
+      <p><strong>Subtotal:</strong> ${{ subtotal }}</p>
+      <p *ngIf="discount > 0">
+        <strong>Total con descuento:</strong> ${{ subtotal - discount }}
+      </p>
+      <button class="pay-btn" (click)="goToPayment()">Pagar</button>
+    </div>
+  </div>
+  

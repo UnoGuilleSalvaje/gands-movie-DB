@@ -1,0 +1,30 @@
+<br><br><br>
+<div>
+    <h1>Ventas</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>ID Venta</th>
+          <th>Fecha</th>
+          <th>Monto Total</th>
+          <th>Usuario</th>
+          <th>Método de Pago</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let venta of ventas">
+          <td>{{ venta.ID_Venta }}</td>
+          <td>{{ venta.Fecha }}</td>
+          <td>{{ venta.Monto_Total | currency }}</td>
+          <td>{{ venta.ID_Usuario }}</td>
+          <td>{{ venta.ID_Metodo_Pago }}</td>
+          <td>
+            <button (click)="editarVenta(venta)">Editar</button>
+            <button (click)="eliminarVenta(venta.ID_Venta)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

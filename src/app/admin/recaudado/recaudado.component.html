@@ -1,0 +1,19 @@
+<br><br><br>
+<div class="table-container">
+    <h2>Recaudación por Película</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Película</th>
+          <th>Total Recaudado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pelicula of recaudacionPorPelicula">
+          <td>{{ pelicula.Pelicula }}</td>
+          <td>{{ pelicula.Total_Recaudado | currency }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

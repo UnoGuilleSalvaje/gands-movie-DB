@@ -1,0 +1,70 @@
+
+<div>
+    <h1>Cupones</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Tipo</th>
+          <th>Descuento</th>
+          <th>Estado</th>
+          <th>Fecha Expiración</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cupon of cupones">
+          <td>{{ cupon.Codigo }}</td>
+          <td>{{ cupon.Tipo }}</td>
+          <td>{{ cupon.Descuento }}</td>
+          <td>{{ cupon.Estado }}</td>
+          <td>{{ cupon.Fecha_Expiracion | date }}</td>
+          <td>
+            <button (click)="editarCupon(cupon)">Editar</button>
+            <button (click)="eliminarCupon(cupon.ID_Cupon)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Formulario de edición -->
+    <div *ngIf="cuponSeleccionado" class="modal">
+      <div class="modal-content">
+        <h2>Editar Cupón</h2>
+        <form (ngSubmit)="guardarCambios()">
+          <label>
+            Código:
+            <input type="text" [(ngModel)]="cuponSeleccionado.Codigo" name="codigo" required />
+          </label>
+          <label>
+            Tipo:
+            <select [(ngModel)]="cuponSeleccionado.Tipo" name="tipo" required>
+              <option value="Descuento">Descuento</option>
+              <option value="Cashback">Cashback</option>
+              <option value="Puntos Extra">Puntos Extra</option>
+            </select>
+          </label>
+          <label>
+            Descuento:
+            <input type="number" [(ngModel)]="cuponSeleccionado.Descuento" name="descuento" required />
+          </label>
+          <label>
+            Estado:
+            <select [(ngModel)]="cuponSeleccionado.Estado" name="estado" required>
+              <option value="Activo">Activo</option>
+              <option value="Expirado">Expirado</option>
+              <option value="Suspendido">Suspendido</option>
+            </select>
+          </label>
+          <label>
+            Fecha Expiración:
+            <input type="date" [(ngModel)]="cuponSeleccionado.Fecha_Expiracion" name="fechaExpiracion" required />
+          </label>
+          <div class="actions">
+            <button type="submit">Guardar</button>
+            <button type="button" (click)="cancelarEdicion()">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

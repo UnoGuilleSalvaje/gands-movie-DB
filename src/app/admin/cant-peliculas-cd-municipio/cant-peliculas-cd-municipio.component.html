@@ -1,0 +1,19 @@
+<br><br><br>
+<div class="table-container">
+    <h2>Películas Vendidas por Municipio</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Municipio</th>
+          <th>Películas Vendidas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let municipio of peliculasPorMunicipio">
+          <td>{{ municipio.Municipio }}</td>
+          <td>{{ municipio.Peliculas_Vendidas }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

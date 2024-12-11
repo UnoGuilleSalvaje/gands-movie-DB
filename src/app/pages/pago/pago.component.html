@@ -1,0 +1,69 @@
+<br><br><br>
+<div class="payment-container">
+  <h2>Resumen de Pago</h2>
+  <p><strong>Total a pagar:</strong> ${{ total }}</p>
+  <p *ngIf="descuentoAplicado > 0">
+    <strong>Descuento aplicado:</strong> ${{ descuentoAplicado }}
+  </p>
+  <p *ngIf="montoFaltante > 0">
+    <strong>Monto faltante:</strong> ${{ montoFaltante }}
+  </p>
+
+  <div class="payment-methods">
+    <h3>Selecciona un método de pago</h3>
+    <div *ngFor="let metodo of metodosPago">
+      <input
+        type="radio"
+        [value]="metodo.ID_Metodo_Pago.toString()" 
+        name="metodoPago"
+        [(ngModel)]="selectedMetodo"
+      />
+      {{ metodo.Nombre }}
+    </div>
+  </div>
+
+  <!-- Efectivo -->
+  <div *ngIf="selectedMetodo === '1'">
+    <label for="efectivoCantidad">Cantidad en efectivo:</label>
+    <input
+      type="number"
+      [(ngModel)]="efectivoCantidad"
+      id="efectivoCantidad"
+      placeholder="Ingrese la cantidad"
+    />
+  </div>
+
+  <!-- Tarjeta -->
+  <div *ngIf="selectedMetodo === '2'">
+    <label for="numeroTarjeta">Número de tarjeta:</label>
+    <input type="text" [(ngModel)]="tarjetaDatos.numero" id="numeroTarjeta" />
+
+    <label for="expiracionTarjeta">Fecha de expiración:</label>
+    <input
+      type="text"
+      [(ngModel)]="tarjetaDatos.expiracion"
+      id="expiracionTarjeta"
+      placeholder="MM/AA"
+    />
+
+    <label for="cvvTarjeta">CVV:</label>
+    <input type="text" [(ngModel)]="tarjetaDatos.cvv" id="cvvTarjeta" />
+  </div>
+
+  <!-- Código promocional -->
+  <div *ngIf="selectedMetodo === '3'">
+    <label for="codigoPromocional">Código promocional:</label>
+    <input
+      type="text"
+      [(ngModel)]="codigoPromocional"
+      id="codigoPromocional"
+      placeholder="Ingrese el código"
+    />
+    <button (click)="validarCodigo()">Validar Código</button>
+  </div>
+  <br><br>
+
+  <button [disabled]="!selectedMetodo" (click)="procesarPago()">
+    Confirmar Pago
+  </button>
+</div>

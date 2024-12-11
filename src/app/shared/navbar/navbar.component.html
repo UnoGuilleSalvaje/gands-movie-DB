@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg fixed-top" [ngStyle]="navBackground">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="home">GANDS MOVIE</a>
+    <button *ngIf="loggedIn" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <ul class="navbar-nav ms-auto">
+      <!-- Menú principal -->
+      <li class="nav-item">
+        <a class="nav-link active me-2" aria-current="page" routerLink="home">Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active me-2" routerLink="peliculas">Películas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active me-2" routerLink="novedades">Novedades</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active me-2" routerLink="contactanos">Contáctanos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active me-2" routerLink="ayuda">Ayuda</a>
+      </li>
+
+      <!-- Botón de búsqueda -->
+      <li class="nav-item ms-2 me-4">
+        <a class="nav-link btn btn-danger search" routerLink="search">Search</a>
+      </li>
+
+
+      <!-- Botones para usuarios no autenticados -->
+      <li class="nav-item ms-2 me-4" *ngIf="!loggedIn">
+        <a class="nav-link btn btn-danger search" routerLink="login">Login</a>
+      </li>
+      <li class="nav-item ms-2 me-4" *ngIf="!loggedIn">
+        <a class="nav-link btn btn-danger search" routerLink="register">Sign up</a>
+      </li>
+
+
+      <li class="nav-item ms-3" *ngIf="loggedIn">
+        <a class="nav-link active" routerLink="carrito">
+          <img src="../../../assets/icono de carrito.png" alt="Carrito" style="width: 30px;">
+          <span class="badge bg-danger">{{ cartCount }}</span>
+        </a>
+      </li>
+      
+      
+      <!-- Dropdown para usuarios autenticados -->
+      <li class="nav-item dropdown ms-3" *ngIf="loggedIn">
+       
+        
+        <a class="nav-link dropdown-toggle active" id="profileDropdown" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <img src="assets/icono.png" alt="Perfil" class="rounded-circle" style="width: 30px;">
+          {{ userName }}
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+       <!--   <li><a class="dropdown-item" routerLink="milist">Mi lista</a></li> -->
+          <!-- Opción "Admin" para usuarios con rol Admin -->
+          <li *ngIf="userRole === 'Admin'">
+            <a class="dropdown-item text-warning" routerLink="admin">Admin</a>
+          </li>
+          <li><button class="dropdown-item text-danger" (click)="onLogout()">Cerrar Sesión</button></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>

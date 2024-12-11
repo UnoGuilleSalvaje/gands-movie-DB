@@ -1,0 +1,93 @@
+<section class="register">
+  <div class="container">
+    <h3>Crear cuenta</h3>
+    <form [formGroup]="formRegister" class="row g-3" (ngSubmit)="onSubmit()">
+      <div class="col-md-6">
+        <label class="form-label text-white fw-bold">* Nombre</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Escribe tu nombre"
+          formControlName="nombre"
+        />
+      </div>
+      <div class="col-md-6">
+        <label class="form-label text-white fw-bold">* Apellido Paterno</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Escribe tu apellido paterno"
+          formControlName="apellidoPaterno"
+        />
+      </div>
+      <div class="col-md-6">
+        <label class="form-label text-white fw-bold">Apellido Materno</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Escribe tu apellido materno"
+          formControlName="apellidoMaterno"
+        />
+      </div>
+      <div class="col-md-12">
+        <label class="form-label text-white fw-bold">* Correo electrónico</label>
+        <input
+          type="email"
+          class="form-control"
+          placeholder="Escribe tu correo electrónico"
+          formControlName="email"
+        />
+      </div>
+      <div class="col-md-6">
+        <label class="form-label text-white fw-bold">* Contraseña</label>
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Escribe tu contraseña"
+          formControlName="password"
+        />
+      </div>
+      <div class="col-md-6">
+        <label class="form-label text-white fw-bold">* Fecha de nacimiento</label>
+        <input
+          type="date"
+          class="form-control"
+          formControlName="fechaNacimiento"
+        />
+      </div>
+      <div class="col-md-6">
+        <label class="form-label text-white fw-bold">Sexo</label>
+        <select class="form-select" formControlName="sexo">
+          <option value="" disabled selected>Selecciona tu sexo</option>
+          <option value="M">Masculino</option>
+          <option value="F">Femenino</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label text-white fw-bold">ID Dirección</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Escribe tu ID de dirección"
+          formControlName="idDireccion"
+        />
+      </div>
+      <!-- Campo oculto para el rol -->
+      <input type="hidden" formControlName="rol" value="Cliente" />
+      <div class="col-md-12 text-center">
+        <input
+          class="btn btn-danger mt-4"
+          [disabled]="!formRegister.valid"
+          type="submit"
+          value="Registrar"
+        />
+      </div>
+      <div class="col-md-12 text-center mt-3">
+        <p class="text-white">
+          ¿Ya tienes una cuenta? 
+          <a class="text-danger fw-bold" (click)="goToLogin()">Inicia sesión</a>
+        </p>
+      </div>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,21 @@
+<br><br><br>
+<div class="recomendaciones-container">
+  <h2>Recomendaciones por Género</h2>
+
+  <table class="recomendaciones-table" *ngIf="recomendaciones.length > 0">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Pelicula</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let recomendacion of recomendaciones; index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ recomendacion.Recomendacion }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="recomendaciones.length === 0">No hay recomendaciones disponibles.</p>
+</div>

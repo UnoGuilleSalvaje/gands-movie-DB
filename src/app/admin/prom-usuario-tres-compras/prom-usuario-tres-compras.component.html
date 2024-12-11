@@ -1,0 +1,19 @@
+<br><br><br>
+<div class="table-container">
+    <h2>Promedio de Ventas por Usuarios con más de 3 Compras</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID Usuario</th>
+          <th>Promedio de Ventas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let venta of promedioVentas">
+          <td>{{ venta.ID_Usuario }}</td>
+          <td>{{ venta.Promedio_Ventas | currency }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

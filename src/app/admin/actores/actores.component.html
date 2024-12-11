@@ -1,0 +1,55 @@
+
+  
+  
+  
+  <div>
+    <h1>Actores</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido Paterno</th>
+          <th>Apellido Materno</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let actor of actores">
+          <td>{{ actor.Nombre }}</td>
+          <td>{{ actor.Apellido_Paterno }}</td>
+          <td>{{ actor.Apellido_Materno }}</td>
+          <td>
+            <button (click)="editarActor(actor)">Editar</button>
+            <button (click)="eliminarActor(actor.ID_Protagonista)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Formulario de edición -->
+    <div *ngIf="actorSeleccionado" class="modal">
+      <div class="modal-content">
+        <h2>Editar Actor</h2>
+        <form (ngSubmit)="guardarCambios()">
+          <label>
+            Nombre:
+            <input type="text" [(ngModel)]="actorSeleccionado.Nombre" name="nombre" required />
+          </label>
+          <label>
+            Apellido Paterno:
+            <input type="text" [(ngModel)]="actorSeleccionado.Apellido_Paterno" name="apellidoPaterno" required />
+          </label>
+          <label>
+            Apellido Materno:
+            <input type="text" [(ngModel)]="actorSeleccionado.Apellido_Materno" name="apellidoMaterno" />
+          </label>
+          <div class="actions">
+            <button type="submit">Guardar</button>
+            <button type="button" (click)="cancelarEdicion()">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  

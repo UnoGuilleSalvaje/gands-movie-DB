@@ -1,0 +1,19 @@
+<br><br><br>
+<div class="table-container">
+    <h2>Ingresos por Método de Pago</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Método de Pago</th>
+          <th>Ingresos Totales</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ingreso of ingresosPorMetodo">
+          <td>{{ ingreso.Metodo_Pago }}</td>
+          <td>{{ ingreso.Ingresos_Totales | currency }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

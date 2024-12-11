@@ -1,0 +1,18 @@
+<br><br><br>
+<div class="table-container">
+  <h2>Total Recaudado por País de Origen de las Productoras</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>País</th>
+        <th>Total Recaudado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pais of totalRecaudadoPorPais">
+        <td>{{ pais.Pais }}</td>
+        <td>{{ pais.Total_Recaudado | currency }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
